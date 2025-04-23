@@ -5,6 +5,34 @@ import base64
 # ✅ Set Streamlit config
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
 
+st.markdown(
+    """
+    <style>
+    .block-container {
+        padding-top: 3rem !important;  /* Adjust this number to increase/decrease top space */
+    }
+
+    .top-logo {
+        position: absolute;
+        top: 30px;
+        right: 20px;
+        max-height: 50px;
+        width: auto;
+        z-index: 999;
+    }
+
+    .responsive-title {
+        font-size: clamp(26px, 3.5vw, 48px);
+        font-weight: 700;
+        margin-top: 80px;  /* Extra space below logo */
+        margin-bottom: 16px;
+        color: inherit;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # ✅ Convert watermark and top logo
 with open("connexus_logo_watermark.png", "rb") as f:
     watermark_base64 = base64.b64encode(f.read()).decode("utf-8")

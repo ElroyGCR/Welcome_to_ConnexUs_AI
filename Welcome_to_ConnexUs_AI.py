@@ -5,6 +5,34 @@ import base64
 # ✅ Must be first
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
 
+# ✅ THEME SWITCHER (Paste right below ↑)
+if "theme_mode" not in st.session_state:
+    st.session_state.theme_mode = "dark"
+
+theme = st.radio("Choose Theme", ["dark", "light"], index=0 if st.session_state.theme_mode == "dark" else 1)
+
+if theme != st.session_state.theme_mode:
+    st.session_state.theme_mode = theme
+    st.experimental_rerun()
+
+# Inject light mode styles
+if st.session_state.theme_mode == "light":
+    st.markdown(
+        """
+        <style>
+        body, .block-container {
+            background-color: #f7f7f7 !important;
+            color: #222 !important;
+        }
+        .stTabs [data-baseweb="tab-list"] button {
+            background-color: #fff !important;
+            color: #111 !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    
 # ✅ Convert logo to base64 for CSS watermark
 with open("connexus_logo_watermark.png", "rb") as f:
     data_uri = base64.b64encode(f.read()).decode("utf-8")

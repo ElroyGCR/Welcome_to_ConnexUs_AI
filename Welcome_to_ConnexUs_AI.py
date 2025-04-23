@@ -78,7 +78,7 @@ st.markdown(
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        opacity: 0.08;
+        opacity: 0.15;
     }}
 
     .top-logo {{
@@ -98,7 +98,7 @@ st.markdown(
     }}
 
     .agent-header {{
-        font-size: 32px;
+        font-size: 50px;
         font-weight: 600;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -106,7 +106,7 @@ st.markdown(
     }}
 
     .stTabs [data-baseweb="tab"] {{
-        font-size: 20px !important;
+        font-size: 50px !important;
         font-weight: 600 !important;
         padding: 12px 24px !important;
     }}

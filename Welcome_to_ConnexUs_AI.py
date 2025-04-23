@@ -11,29 +11,25 @@ with open("connexus_logo_watermark.png", "rb") as f:
     logo_url = f"data:image/png;base64,{data_uri}"
 
 # ✅ Inject CSS (watermark + spacing + transparent containers)
+# Responsive, theme-aware watermark
 st.markdown(
     f"""
     <style>
-    .block-container {{
-        padding-top: 1rem !important;
-    }}
     .watermark {{
         position: fixed;
         top: 40px;
         left: 50%;
         transform: translateX(-50%);
-        height: 625px;
-        width: 700px;
+        height: auto;
+        width: 40vw;
+        max-width: 750px;
         z-index: 0;
         pointer-events: none;
-        background-image: url("{logo_url}");
+        background-image: url("data:image/png;base64,{img_base64}");
         background-repeat: no-repeat;
-        background-position: center center;
+        background-position: center;
         background-size: contain;
-        opacity: 0.15;
-    }}
-    section.main > div {{
-        background-color: transparent !important;
+        opacity: 0.08;
     }}
     </style>
     <div class="watermark"></div>

@@ -33,13 +33,11 @@ if st.session_state.theme_mode == "light":
         unsafe_allow_html=True
     )
     
-# ✅ Convert logo to base64 for CSS watermark
-with open("connexus_logo_watermark.png", "rb") as f:
-    data_uri = base64.b64encode(f.read()).decode("utf-8")
-    logo_url = f"data:image/png;base64,{data_uri}"
+# ✅ Convert new watermark logo to base64
+with open("connexus_logo_watermark_triangle.png", "rb") as f:  # use the latest triangle logo you uploaded
+    triangle_logo_base64 = base64.b64encode(f.read()).decode("utf-8")
 
-# ✅ Inject CSS (watermark + spacing + transparent containers)
-# Responsive, theme-aware watermark
+# ✅ Inject responsive triangle logo watermark
 st.markdown(
     f"""
     <style>
@@ -53,7 +51,7 @@ st.markdown(
         max-width: 750px;
         z-index: 0;
         pointer-events: none;
-        background-image: url("data:image/png;base64,{img_base64}");
+        background-image: url("data:image/png;base64,{triangle_logo_base64}");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;

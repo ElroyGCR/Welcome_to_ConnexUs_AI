@@ -63,6 +63,14 @@ st.markdown(
 )
 
 # ✅ Page title and tabs
+st.markdown(
+    """
+    <h1 style='font-size: 3.5vw; font-weight: 800; margin-bottom: 12px;'>
+        Pick the V-Rep you would like to speak with
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
 st.title("Pick the V-Rep you would like to speak with")
 tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])
 

@@ -72,13 +72,13 @@ st.markdown(
         height: auto;
         width: 40vw;
         max-width: 750px;
-        z-index: 0;
         pointer-events: none;
         background-image: url("data:image/png;base64,{triangle_logo_base64}");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
         opacity: 0.15;
+        z-index: 1;
     }}
 
     .top-logo {{

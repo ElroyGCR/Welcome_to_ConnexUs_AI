@@ -49,7 +49,7 @@ if st.session_state.theme_mode == "light":
     )
     
 # ✅ Convert new watermark logo to base64
-with open("connexus_logo_watermark_triangle.png", "rb") as f:  # use the latest triangle logo you uploaded
+with open("connexus_logo_watermark.png", "rb") as f:
     triangle_logo_base64 = base64.b64encode(f.read()).decode("utf-8")
 
 # ✅ Inject responsive triangle logo watermark

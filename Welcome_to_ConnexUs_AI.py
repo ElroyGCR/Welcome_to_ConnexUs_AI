@@ -13,7 +13,7 @@ theme = st.radio("Choose Theme", ["dark", "light"], index=0 if st.session_state.
 
 if theme != st.session_state.theme_mode:
     st.session_state.theme_mode = theme
-    st.experimental_rerun()
+    st.rerun()
 
 # ✅ Global tab style (make this part renderable)
 st.markdown(

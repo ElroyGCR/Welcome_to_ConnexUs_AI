@@ -4,10 +4,7 @@ import base64
 
 # ✅ Must be first
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
-
-if "theme_mode" not in st.session_state:
-    st.session_state.theme_mode = "dark"  # or "auto"
-    
+  
 st.markdown(
     """
     <style>
@@ -33,25 +30,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-# Inject light mode styles
-if st.session_state.theme_mode == "light":
-    st.markdown(
-        """
-        <style>
-        body, .block-container {
-            background-color: #f7f7f7 !important;
-            color: #222 !important;
-        }
-        .stTabs [data-baseweb="tab-list"] button {
-            background-color: #fff !important;
-            color: #111 !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-    
+  
 # ✅ Clean global CSS and watermark
 with open("connexus_logo_watermark.png", "rb") as f:
     triangle_logo_base64 = base64.b64encode(f.read()).decode("utf-8")

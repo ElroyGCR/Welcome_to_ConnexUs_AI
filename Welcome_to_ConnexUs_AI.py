@@ -4,7 +4,10 @@ import base64
 
 # ✅ Must be first
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
-  
+
+# Dummy empty block to expose watermark
+st.markdown("<div style='height: 600px;'></div>", unsafe_allow_html=True)
+
 st.markdown(
     """
     <style>

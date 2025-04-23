@@ -61,7 +61,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
 # ✅ Tabs - this section is now clean
 tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])
 

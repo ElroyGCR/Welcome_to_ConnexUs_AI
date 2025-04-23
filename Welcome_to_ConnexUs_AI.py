@@ -5,14 +5,14 @@ import base64
 # ✅ Set Streamlit config
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
 
-# ✅ Load both images
+# ✅ Load images
 with open("connexus_logo_watermark.png", "rb") as f:
     triangle_logo_base64 = base64.b64encode(f.read()).decode("utf-8")
 
 with open("connexus_logo.png", "rb") as f:
     logo_topright_base64 = base64.b64encode(f.read()).decode("utf-8")
 
-# ✅ Global CSS
+# ✅ Inject layout and styles
 st.markdown(
     f"""
     <style>
@@ -55,27 +55,19 @@ st.markdown(
         font-weight: 600 !important;
         padding: 12px 24px !important;
     }}
-
-    .watermark {{
-        position: fixed;
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 40vw;
-        max-width: 750px;
-        height: auto;
-        background-image: url("data:image/png;base64,{triangle_logo_base64}");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        opacity: 0.15;
-        z-index: 0;
-        pointer-events: none;
-    }}
     </style>
 
-    <div class="watermark"></div>
     <img src="data:image/png;base64,{logo_topright_base64}" class="top-logo" />
+    """,
+    unsafe_allow_html=True
+)
+
+# ✅ Restore missing header
+st.markdown(
+    """
+    <h1 class="responsive-title">
+        Pick the V-Rep you would like to speak with
+    </h1>
     """,
     unsafe_allow_html=True
 )

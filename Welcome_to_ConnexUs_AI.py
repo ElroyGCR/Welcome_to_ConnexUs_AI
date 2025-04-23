@@ -12,16 +12,17 @@ with open("connexus_logo_watermark.png", "rb") as f:
 with open("connexus_logo.png", "rb") as f:
     logo_topright = base64.b64encode(f.read()).decode("utf-8")
 
-# ✅ Inject everything in one clean go
+# ✅ Clean layout with visible watermark and correct layering
 st.markdown(
     f"""
     <style>
     .block-container {{
+        padding-top: 2rem !important;
         position: relative;
-        background-image: url("data:image/png;base64,{watermark_base64}");
+        background-image: url("data:image/png;base64,{triangle_logo_base64}");
         background-repeat: no-repeat;
-        background-position: center 100px;  /* adjust vertically */
-        background-size: 65%;
+        background-position: center 200px;
+        background-size: 55%;
     }}
 
     .top-logo {{
@@ -30,13 +31,13 @@ st.markdown(
         right: 20px;
         max-height: 50px;
         width: auto;
-        z-index: 999;
+        z-index: 1000;
     }}
 
     .responsive-title {{
         font-size: clamp(26px, 3.5vw, 48px);
         font-weight: 700;
-        margin-top: 120px;
+        margin-top: 140px;
         margin-bottom: 16px;
         color: inherit;
     }}

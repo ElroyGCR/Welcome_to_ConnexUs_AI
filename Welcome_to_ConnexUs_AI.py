@@ -19,7 +19,7 @@ st.markdown(
     }}
     .watermark {{
         position: fixed;
-        top: 80px;
+        top: 20px;
         left: 50%;
         transform: translateX(-50%);
         height: 800px;

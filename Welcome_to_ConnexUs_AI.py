@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 import base64
 
 # ✅ Must be first
-st.set_page_config(page_title="Multi-Agent Chat – Connexus AI", layout="wide")
+st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
 
 # ✅ Convert logo to base64 for CSS watermark
 with open("connexus_logo_watermark.png", "rb") as f:

@@ -19,18 +19,18 @@ st.markdown(
     }}
     .watermark {{
         position: fixed;
-        top: 200px;
+        top: 80px;
         left: 50%;
         transform: translateX(-50%);
-        height: 500px;
-        width: 600px;
+        height: 800px;
+        width: 850px;
         z-index: 0;
         pointer-events: none;
         background-image: url("{logo_url}");
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
-        opacity: 0.08;
+        opacity: 0.15;
     }}
     </style>
     <div class="watermark"></div>

@@ -5,6 +5,17 @@ import base64
 # ✅ Must be first
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
 
+st.markdown(
+    """
+    <style>
+    .block-container {
+        padding-top: 0rem !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # ✅ Global tab style (make this part renderable)
 st.markdown(
     """

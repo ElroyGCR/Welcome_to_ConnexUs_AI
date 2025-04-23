@@ -1,37 +1,9 @@
-import streamlit as st
+import streamlit as st 
 import streamlit.components.v1 as components
 import base64
 
 # ✅ Set Streamlit config
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
-
-st.markdown(
-    """
-    <style>
-    .block-container {
-        padding-top: 3rem !important;  /* Adjust this number to increase/decrease top space */
-    }
-
-    .top-logo {
-        position: absolute;
-        top: 30px;
-        right: 20px;
-        max-height: 50px;
-        width: auto;
-        z-index: 999;
-    }
-
-    .responsive-title {
-        font-size: clamp(26px, 3.5vw, 48px);
-        font-weight: 700;
-        margin-top: 80px;  /* Extra space below logo */
-        margin-bottom: 16px;
-        color: inherit;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 # ✅ Load both images
 with open("connexus_logo_watermark.png", "rb") as f:
@@ -40,49 +12,12 @@ with open("connexus_logo_watermark.png", "rb") as f:
 with open("connexus_logo.png", "rb") as f:
     logo_topright_base64 = base64.b64encode(f.read()).decode("utf-8")
 
-# ✅ CSS + HTML for watermark and top logo
-st.markdown(
-    f"""
-    <style>
-    .watermark {{
-        position: fixed;
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 40vw;
-        max-width: 750px;
-        height: auto;
-        background-image: url("data:image/png;base64,{triangle_logo_base64}");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        opacity: 0.15;
-        z-index: 0;
-        pointer-events: none;
-    }}
-
-    .top-logo {{
-        position: absolute;
-        top: 30px;
-        right: 20px;
-        max-height: 50px;
-        width: auto;
-        z-index: 999;
-    }}
-    </style>
-
-    <div class="watermark"></div>
-    <img src="data:image/png;base64,{logo_topright_base64}" class="top-logo" />
-    """,
-    unsafe_allow_html=True
-)
-
-# ✅ Clean layout with visible watermark and correct layering
+# ✅ Global CSS
 st.markdown(
     f"""
     <style>
     .block-container {{
-        padding-top: 2rem !important;
+        padding-top: 3rem !important;
         position: relative;
         background-image: url("data:image/png;base64,{triangle_logo_base64}");
         background-repeat: no-repeat;
@@ -96,7 +31,7 @@ st.markdown(
         right: 20px;
         max-height: 50px;
         width: auto;
-        z-index: 1000;
+        z-index: 999;
     }}
 
     .responsive-title {{
@@ -120,9 +55,27 @@ st.markdown(
         font-weight: 600 !important;
         padding: 12px 24px !important;
     }}
+
+    .watermark {{
+        position: fixed;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40vw;
+        max-width: 750px;
+        height: auto;
+        background-image: url("data:image/png;base64,{triangle_logo_base64}");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0.15;
+        z-index: 0;
+        pointer-events: none;
+    }}
     </style>
 
-    <img src="data:image/png;base64,{logo_topright}" class="top-logo" />
+    <div class="watermark"></div>
+    <img src="data:image/png;base64,{logo_topright_base64}" class="top-logo" />
     """,
     unsafe_allow_html=True
 )

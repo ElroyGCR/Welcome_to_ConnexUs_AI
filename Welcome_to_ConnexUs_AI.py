@@ -19,7 +19,7 @@ st.markdown(
     }}
     .watermark {{
         position: fixed;
-        top: 50px;
+        top: 40px;
         left: 50%;
         transform: translateX(-50%);
         height: 625px;
@@ -50,7 +50,7 @@ st.markdown(
     <style>
     .top-logo {{
         position: absolute;
-        top: 40px;
+        top: 50px;
         right: 20px;
         max-height: 70px;  /* adjust this based on how tall you want it */
         width: auto;

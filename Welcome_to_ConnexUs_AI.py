@@ -41,6 +41,26 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# ✅ Top-right logo block
+with open("connexus_logo.png", "rb") as f:
+    logo_topright = base64.b64encode(f.read()).decode("utf-8")
+
+st.markdown(
+    f"""
+    <style>
+    .top-logo {{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        height: 50px;
+        z-index: 999;
+    }}
+    </style>
+    <img src="data:image/png;base64,{logo_topright}" class="top-logo" />
+    """,
+    unsafe_allow_html=True
+)
+
 # ✅ Page title and tabs
 st.title("💬 Multi-Agent Chat")
 tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])

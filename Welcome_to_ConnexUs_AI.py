@@ -34,29 +34,26 @@ st.markdown(
     unsafe_allow_html=True
 )
   
-# ✅ Clean global CSS and watermark
+# ✅ Logo image conversion (no change)
 with open("connexus_logo_watermark.png", "rb") as f:
     triangle_logo_base64 = base64.b64encode(f.read()).decode("utf-8")
 
 with open("connexus_logo.png", "rb") as f:
     logo_topright = base64.b64encode(f.read()).decode("utf-8")
 
+# ✅ Styles and logos
 st.markdown(
     f"""
     <style>
-    .block-container {{
-        padding-top: 0rem !important;
-    }}
-
     .watermark {{
         position: fixed;
-        top: 40px;
+        top: 120px;
         left: 50%;
         transform: translateX(-50%);
-        height: auto;
         width: 40vw;
         max-width: 750px;
-        z-index: 1;
+        height: auto;
+        z-index: -1;  /* Push it behind all app content */
         pointer-events: none;
         background-image: url("data:image/png;base64,{triangle_logo_base64}");
         background-repeat: no-repeat;
@@ -102,14 +99,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown(
-    """
-    <h1 class="responsive-title">
-        Pick the V-Rep you would like to speak with
-    </h1>
-    """,
-    unsafe_allow_html=True
-)
+# ✅ Dummy div moved BELOW to help scroll and reveal watermark if needed
+st.markdown("<div style='height: 1000px;'></div>", unsafe_allow_html=True)
 
 # ✅ Tabs - this section is now clean
 tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])

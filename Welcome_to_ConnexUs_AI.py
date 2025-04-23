@@ -15,6 +15,21 @@ if theme != st.session_state.theme_mode:
     st.session_state.theme_mode = theme
     st.experimental_rerun()
 
+# ✅ Global tab style (make this part renderable)
+st.markdown(
+    """
+    <style>
+    /* Make tab labels bigger + more spacing */
+    .stTabs [data-baseweb="tab"] {
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        padding: 12px 24px !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Inject light mode styles
 if st.session_state.theme_mode == "light":
     st.markdown(
@@ -84,16 +99,38 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ✅ Page title and tabs
+# ✅ Page title and tab labels
 st.markdown(
     """
-    <h1 style='font-size: 3.5vw; font-weight: 700; margin-bottom: 12px;'>
+    <style>
+    .responsive-title {
+        font-size: clamp(26px, 3.5vw, 48px);
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: inherit;
+    }
+
+    /* Agent tab styling globally */
+    .stTabs [data-baseweb="tab"] {
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        padding: 12px 24px !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <h1 class="responsive-title">
         Pick the V-Rep you would like to speak with
     </h1>
     """,
     unsafe_allow_html=True
 )
-st.title("Pick the V-Rep you would like to speak with")
+
+# ✅ Tabs - this section is now clean
 tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])
 
 # === AMBER ===

@@ -29,7 +29,7 @@ st.markdown(
         position: absolute;
         top: 30px;
         right: 20px;
-        max-height: 50px;
+        max-height: 80px;
         width: auto;
         z-index: 999;
     }}

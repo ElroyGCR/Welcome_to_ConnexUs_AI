@@ -33,12 +33,35 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ✅ Convert watermark and top logo
+# ✅ Convert watermark logo
 with open("connexus_logo_watermark.png", "rb") as f:
-    watermark_base64 = base64.b64encode(f.read()).decode("utf-8")
+    triangle_logo_base64 = base64.b64encode(f.read()).decode("utf-8")
 
-with open("connexus_logo.png", "rb") as f:
-    logo_topright = base64.b64encode(f.read()).decode("utf-8")
+# ✅ Place as dedicated <div> (independent of background layers)
+st.markdown(
+    f"""
+    <style>
+    .watermark {{
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40vw;
+        max-width: 750px;
+        height: auto;
+        background-image: url("data:image/png;base64,{triangle_logo_base64}");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0.15;
+        z-index: 0;
+        pointer-events: none;
+    }}
+    </style>
+    <div class="watermark"></div>
+    """,
+    unsafe_allow_html=True
+)
 
 # ✅ Clean layout with visible watermark and correct layering
 st.markdown(

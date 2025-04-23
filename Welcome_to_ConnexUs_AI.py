@@ -5,12 +5,12 @@ import base64
 # ✅ Must be first
 st.set_page_config(page_title="Multi-Agent Chat – Connexus AI", layout="wide")
 
-# ✅ Convert logo to base64 (same image you uploaded)
+# ✅ Convert logo to base64 for CSS watermark
 with open("connexus_logo_watermark.png", "rb") as f:
     data_uri = base64.b64encode(f.read()).decode("utf-8")
     logo_url = f"data:image/png;base64,{data_uri}"
 
-# ✅ Inject CSS watermark and top spacing tweak
+# ✅ Inject CSS (watermark + spacing + transparent containers)
 st.markdown(
     f"""
     <style>
@@ -32,6 +32,9 @@ st.markdown(
         background-size: contain;
         opacity: 0.15;
     }}
+    section.main > div {{
+        background-color: transparent !important;
+    }}
     </style>
     <div class="watermark"></div>
     """,
@@ -42,9 +45,11 @@ st.markdown(
 st.title("💬 Multi-Agent Chat – Connexus AI")
 tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])
 
+# === AMBER ===
 with tabs[0]:
     st.subheader("Amber – Ecampus Prototype")
     components.html("""
+    <div style="background-color: transparent;">
     <script src="https://connexusai.pages.dev/chat-widget.js"
       integrity="vC9YPpJCP1QqkOQ9kePoXmywFRS4mksl4NjUesvWKelztotJiBII+WJuR6TYolgu%"
       data-source-id="Ai-001-Ecampus_Protoype"
@@ -55,13 +60,17 @@ with tabs[0]:
     <script>
       window.onload = () => {{
         ChatWidget.initializeChatWidget();
+        document.body.style.background = "transparent";
       }};
     </script>
+    </div>
     """, height=400)
 
+# === ABE ===
 with tabs[1]:
     st.subheader("Abe – Info Receptionist")
     components.html("""
+    <div style="background-color: transparent;">
     <script src="https://connexusai.pages.dev/chat-widget.js"
       integrity="vC9YPpJCP1QqkOQ9kePoXmywFRS4mksl4NjUesvWKelztotJiBII+WJuR6TYolgu%"
       data-source-id="Ai-001-HonestAbe_InfoReceptionist_Prototype"
@@ -72,13 +81,17 @@ with tabs[1]:
     <script>
       window.onload = () => {{
         ChatWidget.initializeChatWidget();
+        document.body.style.background = "transparent";
       }};
     </script>
+    </div>
     """, height=400)
 
+# === NOAH ===
 with tabs[2]:
     st.subheader("Noah – Home Life Shield")
     components.html("""
+    <div style="background-color: transparent;">
     <script src="https://connexusai.pages.dev/chat-widget.js"
       integrity="vC9YPpJCP1QqkOQ9kePoXmywFRS4mksl4NjUesvWKelztotJiBII+WJuR6TYolgu%"
       data-source-id="Ai-001-Noah_HomeLifeShield"
@@ -89,6 +102,8 @@ with tabs[2]:
     <script>
       window.onload = () => {{
         ChatWidget.initializeChatWidget();
+        document.body.style.background = "transparent";
       }};
     </script>
+    </div>
     """, height=400)

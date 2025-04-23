@@ -74,7 +74,7 @@ st.markdown(
         position: absolute;
         top: 50px;
         right: 20px;
-        max-height: 70px;  /* adjust this based on how tall you want it */
+        max-height: 50px;  /* adjust this based on how tall you want it */
         width: auto;
         z-index: 999;
     }}

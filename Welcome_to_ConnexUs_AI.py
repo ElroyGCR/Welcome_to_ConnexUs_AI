@@ -2,69 +2,44 @@ import streamlit as st
 import streamlit.components.v1 as components
 import base64
 
-# ✅ Must be first
+# ✅ Set Streamlit config
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
 
-# Add this after your title to ensure the page has enough height for the watermark to show
-st.markdown("<div style='height: 800px;'></div>", unsafe_allow_html=True)
-
-st.markdown(
-    """
-    <style>
-    .block-container {
-        padding-top: 0rem !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# ✅ Global tab style (make this part renderable)
-st.markdown(
-    """
-    <style>
-    /* Make tab labels bigger + more spacing */
-    .stTabs [data-baseweb="tab"] {
-        font-size: 40px !important;
-        font-weight: 600 !important;
-        padding: 12px 24px !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-  
-# ✅ Logo image conversion (no change)
+# ✅ Load logos as base64
 with open("connexus_logo_watermark.png", "rb") as f:
     triangle_logo_base64 = base64.b64encode(f.read()).decode("utf-8")
 
 with open("connexus_logo.png", "rb") as f:
     logo_topright = base64.b64encode(f.read()).decode("utf-8")
 
-# ✅ Styles and logos
+# ✅ Inject all global styles, watermark, and logo
 st.markdown(
     f"""
     <style>
+    .block-container {{
+        padding-top: 0rem !important;
+    }}
+
     .watermark {{
-        position: fixed;
-        top: 120px;
+        position: absolute;
+        top: 150px;
         left: 50%;
         transform: translateX(-50%);
         width: 40vw;
         max-width: 750px;
         height: auto;
-        z-index: -1;  /* Push it behind all app content */
+        z-index: 0;
         pointer-events: none;
         background-image: url("data:image/png;base64,{triangle_logo_base64}");
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center top;
         background-size: contain;
         opacity: 0.15;
     }}
 
     .top-logo {{
         position: absolute;
-        top: 50px;
+        top: 30px;
         right: 20px;
         max-height: 50px;
         width: auto;
@@ -99,8 +74,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ✅ Dummy div moved BELOW to help scroll and reveal watermark if needed
-st.markdown("<div style='height: 1000px;'></div>", unsafe_allow_html=True)
+# ✅ Page title
+st.markdown(
+    """
+    <h1 class="responsive-title">
+        Pick the V-Rep you would like to speak with
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
+
 
 # ✅ Tabs - this section is now clean
 tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])

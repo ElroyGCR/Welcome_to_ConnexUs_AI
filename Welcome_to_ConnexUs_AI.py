@@ -21,7 +21,7 @@ st.markdown(
     <style>
     /* Make tab labels bigger + more spacing */
     .stTabs [data-baseweb="tab"] {
-        font-size: 20px !important;
+        font-size: 40px !important;
         font-weight: 600 !important;
         padding: 12px 24px !important;
     }
@@ -110,7 +110,7 @@ st.markdown(
     }
 
     .agent-header {
-        font-size: 26px;
+        font-size: 32px;
         font-weight: 600;
         margin-top: 10px;
         margin-bottom: 10px;

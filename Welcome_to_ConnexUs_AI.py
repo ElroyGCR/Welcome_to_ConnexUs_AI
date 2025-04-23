@@ -20,22 +20,22 @@ st.markdown(
         padding-top: 0rem !important;
     }}
 
-    .watermark {{
-        position: absolute;
-        top: 150px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 40vw;
-        max-width: 750px;
-        height: auto;
-        z-index: 0;
-        pointer-events: none;
-        background-image: url("data:image/png;base64,{triangle_logo_base64}");
-        background-repeat: no-repeat;
-        background-position: center top;
-        background-size: contain;
-        opacity: 0.15;
-    }}
+    .watermark {
+    position: absolute;
+    top: 250px;  /* was 120px — push it further down */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40vw;
+    max-width: 750px;
+    height: auto;
+    z-index: 0;  /* lower than top logo, higher than background */
+    pointer-events: none;
+    background-image: url("data:image/png;base64,{triangle_logo_base64}");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    opacity: 0.15;  /* slightly reduced to balance visibility */
+}
 
     .top-logo {{
         position: absolute;

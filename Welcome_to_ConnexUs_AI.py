@@ -50,7 +50,7 @@ st.markdown(
     <style>
     .top-logo {{
         position: absolute;
-        top: 20px;
+        top: 40px;
         right: 20px;
         height: 50px;
         z-index: 999;

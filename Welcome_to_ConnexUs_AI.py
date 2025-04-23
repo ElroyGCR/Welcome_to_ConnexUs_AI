@@ -21,7 +21,7 @@ st.markdown(
         position: relative;
         background-image: url("data:image/png;base64,{triangle_logo_base64}");
         background-repeat: no-repeat;
-        background-position: center 240px;
+        background-position: center 140px;
         background-size: 45%;
     }}
 

@@ -49,14 +49,21 @@ if st.session_state.theme_mode == "light":
         unsafe_allow_html=True
     )
     
-# ✅ Convert new watermark logo to base64
+# ✅ Clean global CSS and watermark
 with open("connexus_logo_watermark.png", "rb") as f:
     triangle_logo_base64 = base64.b64encode(f.read()).decode("utf-8")
 
-# ✅ Inject responsive triangle logo watermark
+with open("connexus_logo.png", "rb") as f:
+    logo_topright = base64.b64encode(f.read()).decode("utf-8")
+
 st.markdown(
     f"""
     <style>
+    .block-container {{
+        padding-top: 0rem !important;
+        background-color: transparent !important;
+    }}
+
     .watermark {{
         position: fixed;
         top: 40px;
@@ -73,58 +80,40 @@ st.markdown(
         background-size: contain;
         opacity: 0.08;
     }}
-    </style>
-    <div class="watermark"></div>
-    """,
-    unsafe_allow_html=True
-)
 
-# ✅ Top-right logo block
-with open("connexus_logo.png", "rb") as f:
-    logo_topright = base64.b64encode(f.read()).decode("utf-8")
-
-st.markdown(
-    f"""
-    <style>
     .top-logo {{
         position: absolute;
         top: 50px;
         right: 20px;
-        max-height: 50px;  /* adjust this based on how tall you want it */
+        max-height: 50px;
         width: auto;
         z-index: 999;
     }}
-    </style>
-    <img src="data:image/png;base64,{logo_topright}" class="top-logo" />
-    """,
-    unsafe_allow_html=True
-)
 
-st.markdown(
-    """
-    <style>
-    .responsive-title {
+    .responsive-title {{
         font-size: clamp(26px, 3.5vw, 48px);
         font-weight: 700;
         margin-bottom: 16px;
         color: inherit;
-    }
+    }}
 
-    .agent-header {
+    .agent-header {{
         font-size: 32px;
         font-weight: 600;
         margin-top: 10px;
         margin-bottom: 10px;
         color: inherit;
-    }
+    }}
 
-    /* Agent tab styling globally */
-    .stTabs [data-baseweb="tab"] {
+    .stTabs [data-baseweb="tab"] {{
         font-size: 20px !important;
         font-weight: 600 !important;
         padding: 12px 24px !important;
-    }
+    }}
     </style>
+
+    <div class="watermark"></div>
+    <img src="data:image/png;base64,{logo_topright}" class="top-logo" />
     """,
     unsafe_allow_html=True
 )

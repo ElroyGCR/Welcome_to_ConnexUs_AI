@@ -1,76 +1,82 @@
-import streamlit as st 
+import streamlit as st
 import streamlit.components.v1 as components
 import base64
 
-# ✅ Set Streamlit config
+# ✅ Config
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
 
-# ✅ Load images
+# ✅ Load watermark and top logo
 with open("connexus_logo_watermark.png", "rb") as f:
-    triangle_logo_base64 = base64.b64encode(f.read()).decode("utf-8")
+    watermark_base64 = base64.b64encode(f.read()).decode("utf-8")
 
 with open("connexus_logo.png", "rb") as f:
     logo_topright_base64 = base64.b64encode(f.read()).decode("utf-8")
 
-# ✅ Inject layout and styles (adjusted tabs and watermark size)
-st.markdown(
-    f"""
-    <style>
-    .block-container {{
-        padding-top: 3rem !important;
-        position: relative;
-        background-image: url("data:image/png;base64,{triangle_logo_base64}");
-        background-repeat: no-repeat;
-        background-position: center 140px;
-        background-size: 45%;
-    }}
+# ✅ Inject global styles + watermark
+st.markdown(f"""
+<style>
+.block-container {{
+    padding-top: 1rem !important;
+    position: relative;
+}}
 
-    .top-logo {{
-        position: absolute;
-        top: 30px;
-        right: 20px;
-        max-height: 60px;
-        width: auto;
-        z-index: 999;
-    }}
+.watermark {{
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 600px;
+    width: 600px;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/png;base64,{watermark_base64}");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    opacity: 0.13;
+}}
 
-    .responsive-title {{
-        font-size: clamp(26px, 3.5vw, 48px);
-        font-weight: 700;
-        margin-top: 140px;
-        margin-bottom: 16px;
-        color: inherit;
-    }}
+.top-logo {{
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    max-height: 60px;
+    width: auto;
+    z-index: 999;
+}}
 
-    .agent-header {{
-        font-size: 32px;
-        font-weight: 600;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        color: inherit;
-    }}
+.responsive-title {{
+    font-size: clamp(26px, 3.5vw, 48px);
+    font-weight: 700;
+    margin-top: 120px;
+    margin-bottom: 16px;
+    color: inherit;
+}}
 
-    .stTabs [data-baseweb="tab"] {{
-        font-size: 36px !important;
-        font-weight: 700 !important;
-        padding: 16px 28px !important;
-    }}
-    </style>
+.agent-header {{
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: inherit;
+}}
 
-    <img src="data:image/png;base64,{logo_topright_base64}" class="top-logo" />
-    """,
-    unsafe_allow_html=True
-)
+.stTabs [data-baseweb="tab"] {{
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    padding: 12px 24px !important;
+}}
+</style>
+
+<!-- ✅ Inject watermark and logo -->
+<div class="watermark"></div>
+<img src="data:image/png;base64,{logo_topright_base64}" class="top-logo" />
+""", unsafe_allow_html=True)
 
 # ✅ Title
-st.markdown(
-    """
-    <h1 class="responsive-title">
-        Pick the V-Rep you would like to speak with
-    </h1>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("""
+<h1 class="responsive-title">Pick the V-Rep you would like to speak with</h1>
+""", unsafe_allow_html=True)
 
 # ✅ Tabs - this section is now clean
 tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])

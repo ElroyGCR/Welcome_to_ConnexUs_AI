@@ -5,8 +5,8 @@ import base64
 # ✅ Must be first
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
 
-# Dummy empty block to expose watermark
-st.markdown("<div style='height: 600px;'></div>", unsafe_allow_html=True)
+# Add this after your title to ensure the page has enough height for the watermark to show
+st.markdown("<div style='height: 800px;'></div>", unsafe_allow_html=True)
 
 st.markdown(
     """

@@ -2,36 +2,43 @@ import streamlit as st
 import streamlit.components.v1 as components
 import base64
 
-# === MUST be first Streamlit call ===
+# ✅ Must be first
 st.set_page_config(page_title="Multi-Agent Chat – Connexus AI", layout="wide")
 
-# === Load logo watermark ===
-def get_base64_logo(file_path):
-    with open(file_path, "rb") as f:
-        return base64.b64encode(f.read()).decode()
+# ✅ Convert logo to base64 (same image you uploaded)
+with open("connexus_logo_watermark.png", "rb") as f:
+    data_uri = base64.b64encode(f.read()).decode("utf-8")
+    logo_url = f"data:image/png;base64,{data_uri}"
 
-logo_base64 = get_base64_logo("connexus_logo_watermark.png")  # Your uploaded logo file
-
-# === Custom CSS ===
-st.markdown(f"""
+# ✅ Inject CSS watermark and top spacing tweak
+st.markdown(
+    f"""
     <style>
-        .block-container {{
-            padding-top: 1rem;
-        }}
-        .logo-watermark {{
-            position: absolute;
-            top: 260px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0.05;
-            z-index: 0;
-            width: 280px;
-        }}
+    .block-container {{
+        padding-top: 1rem !important;
+    }}
+    .watermark {{
+        position: fixed;
+        top: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 500px;
+        width: 600px;
+        z-index: 0;
+        pointer-events: none;
+        background-image: url("{logo_url}");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        opacity: 0.08;
+    }}
     </style>
-    <img src="data:image/png;base64,{logo_base64}" class="logo-watermark" />
-""", unsafe_allow_html=True)
+    <div class="watermark"></div>
+    """,
+    unsafe_allow_html=True
+)
 
-# === Title and Tabs ===
+# ✅ Page title and tabs
 st.title("💬 Multi-Agent Chat – Connexus AI")
 tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])
 

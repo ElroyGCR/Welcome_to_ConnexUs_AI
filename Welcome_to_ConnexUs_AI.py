@@ -5,16 +5,6 @@ import base64
 # ✅ Must be first
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
 
-# ✅ THEME SWITCHER (Paste right below ↑)
-if "theme_mode" not in st.session_state:
-    st.session_state.theme_mode = "dark"
-
-theme = st.radio("Choose Theme", ["dark", "light"], index=0 if st.session_state.theme_mode == "dark" else 1)
-
-if theme != st.session_state.theme_mode:
-    st.session_state.theme_mode = theme
-    st.rerun()
-
 # ✅ Global tab style (make this part renderable)
 st.markdown(
     """

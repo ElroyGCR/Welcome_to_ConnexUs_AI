@@ -99,7 +99,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ✅ Page title and tab labels
 st.markdown(
     """
     <style>
@@ -107,6 +106,14 @@ st.markdown(
         font-size: clamp(26px, 3.5vw, 48px);
         font-weight: 700;
         margin-bottom: 16px;
+        color: inherit;
+    }
+
+    .agent-header {
+        font-size: 26px;
+        font-weight: 600;
+        margin-top: 10px;
+        margin-bottom: 10px;
         color: inherit;
     }
 
@@ -135,7 +142,14 @@ tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])
 
 # === AMBER ===
 with tabs[0]:
-    st.subheader("Amber – Ecampus Prototype")
+    st.markdown(
+    f"""
+    <h2 class="agent-header">
+        Amber – Ecampus Prototype
+    </h2>
+    """,
+    unsafe_allow_html=True
+)
     components.html("""
     <div style="background-color: transparent;">
     <script src="https://connexusai.pages.dev/chat-widget.js"
@@ -156,7 +170,14 @@ with tabs[0]:
 
 # === ABE ===
 with tabs[1]:
-    st.subheader("Abe – Info Receptionist")
+    st.markdown(
+    f"""
+    <h2 class="agent-header">
+        Abe – Info Receptionist
+    </h2>
+    """,
+    unsafe_allow_html=True
+)
     components.html("""
     <div style="background-color: transparent;">
     <script src="https://connexusai.pages.dev/chat-widget.js"
@@ -177,7 +198,14 @@ with tabs[1]:
 
 # === NOAH ===
 with tabs[2]:
-    st.subheader("Noah – Home Life Shield")
+    st.markdown(
+    f"""
+    <h2 class="agent-header">
+        Noah – Home Life Shield
+    </h2>
+    """,
+    unsafe_allow_html=True
+)
     components.html("""
     <div style="background-color: transparent;">
     <script src="https://connexusai.pages.dev/chat-widget.js"

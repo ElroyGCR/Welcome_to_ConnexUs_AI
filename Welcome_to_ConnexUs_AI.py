@@ -5,37 +5,24 @@ import base64
 # ✅ Set Streamlit config
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
 
-# ✅ Load logos as base64
+# ✅ Convert watermark and top logo
 with open("connexus_logo_watermark.png", "rb") as f:
-    triangle_logo_base64 = base64.b64encode(f.read()).decode("utf-8")
+    watermark_base64 = base64.b64encode(f.read()).decode("utf-8")
 
 with open("connexus_logo.png", "rb") as f:
     logo_topright = base64.b64encode(f.read()).decode("utf-8")
 
-# ✅ Inject all global styles, watermark, and logo
+# ✅ Inject everything in one clean go
 st.markdown(
     f"""
     <style>
     .block-container {{
-        padding-top: 0rem !important;
+        position: relative;
+        background-image: url("data:image/png;base64,{watermark_base64}");
+        background-repeat: no-repeat;
+        background-position: center 100px;  /* adjust vertically */
+        background-size: 65%;
     }}
-
-    .watermark {
-    position: absolute;
-    top: 250px;  /* was 120px — push it further down */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40vw;
-    max-width: 750px;
-    height: auto;
-    z-index: 0;  /* lower than top logo, higher than background */
-    pointer-events: none;
-    background-image: url("data:image/png;base64,{triangle_logo_base64}");
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: contain;
-    opacity: 0.15;  /* slightly reduced to balance visibility */
-}
 
     .top-logo {{
         position: absolute;
@@ -49,6 +36,7 @@ st.markdown(
     .responsive-title {{
         font-size: clamp(26px, 3.5vw, 48px);
         font-weight: 700;
+        margin-top: 120px;
         margin-bottom: 16px;
         color: inherit;
     }}
@@ -68,18 +56,7 @@ st.markdown(
     }}
     </style>
 
-    <div class="watermark"></div>
     <img src="data:image/png;base64,{logo_topright}" class="top-logo" />
-    """,
-    unsafe_allow_html=True
-)
-
-# ✅ Page title
-st.markdown(
-    """
-    <h1 class="responsive-title">
-        Pick the V-Rep you would like to speak with
-    </h1>
     """,
     unsafe_allow_html=True
 )

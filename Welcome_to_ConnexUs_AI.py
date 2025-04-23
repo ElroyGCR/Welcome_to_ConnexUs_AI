@@ -1,10 +1,10 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# ✅ MUST be first Streamlit command
+# MUST be the first Streamlit command!
 st.set_page_config(page_title="Multi-Agent Chat – Connexus AI", layout="wide")
 
-# Then you can safely run custom styling
+# Then apply custom styling (like removing top padding, watermark)
 st.markdown("""
     <style>
         .block-container {
@@ -21,7 +21,10 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Tabs for agents
+# Title
+st.title("💬 Multi-Agent Chat – Connexus AI")
+
+# Tabs
 tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])
 
 with tabs[0]:

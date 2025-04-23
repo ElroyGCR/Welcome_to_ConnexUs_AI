@@ -22,8 +22,8 @@ st.markdown(
         top: 20px;
         left: 50%;
         transform: translateX(-50%);
-        height: 700px;
-        width: 750px;
+        height: 600px;
+        width: 650px;
         z-index: 0;
         pointer-events: none;
         background-image: url("{logo_url}");

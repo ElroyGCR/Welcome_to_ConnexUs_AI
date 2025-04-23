@@ -12,7 +12,7 @@ with open("connexus_logo_watermark.png", "rb") as f:
 with open("connexus_logo.png", "rb") as f:
     logo_topright_base64 = base64.b64encode(f.read()).decode("utf-8")
 
-# ✅ Inject layout and styles
+# ✅ Inject layout and styles (adjusted tabs and watermark size)
 st.markdown(
     f"""
     <style>
@@ -21,8 +21,8 @@ st.markdown(
         position: relative;
         background-image: url("data:image/png;base64,{triangle_logo_base64}");
         background-repeat: no-repeat;
-        background-position: center 200px;
-        background-size: 55%;
+        background-position: center 240px;
+        background-size: 45%;
     }}
 
     .top-logo {{
@@ -51,9 +51,9 @@ st.markdown(
     }}
 
     .stTabs [data-baseweb="tab"] {{
-        font-size: 32px !important;
-        font-weight: 600 !important;
-        padding: 12px 24px !important;
+        font-size: 36px !important;
+        font-weight: 700 !important;
+        padding: 16px 28px !important;
     }}
     </style>
 
@@ -62,7 +62,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ✅ Restore missing header
+# ✅ Title
 st.markdown(
     """
     <h1 class="responsive-title">

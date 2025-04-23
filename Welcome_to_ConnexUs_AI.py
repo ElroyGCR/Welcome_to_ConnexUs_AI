@@ -42,7 +42,7 @@ st.markdown(
 )
 
 # ✅ Page title and tabs
-st.title("💬 Multi-Agent Chat – Connexus AI")
+st.title("💬 Multi-Agent Chat")
 tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])
 
 # === AMBER ===

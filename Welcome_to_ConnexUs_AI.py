@@ -87,7 +87,7 @@ st.markdown(
     }}
 
     .stTabs [data-baseweb="tab"] {{
-        font-size: 20px !important;
+        font-size: 32px !important;
         font-weight: 600 !important;
         padding: 12px 24px !important;
     }}

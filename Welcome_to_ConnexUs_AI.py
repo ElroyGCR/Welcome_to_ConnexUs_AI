@@ -5,6 +5,9 @@ import base64
 # ✅ Must be first
 st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
 
+if "theme_mode" not in st.session_state:
+    st.session_state.theme_mode = "dark"  # or "auto"
+    
 st.markdown(
     """
     <style>
@@ -61,7 +64,6 @@ st.markdown(
     <style>
     .block-container {{
         padding-top: 0rem !important;
-        background-color: transparent !important;
     }}
 
     .watermark {{
@@ -72,13 +74,13 @@ st.markdown(
         height: auto;
         width: 40vw;
         max-width: 750px;
+        z-index: 1;
         pointer-events: none;
         background-image: url("data:image/png;base64,{triangle_logo_base64}");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        opacity: 0.15;
-        z-index: 1;
+        opacity: 0.08;
     }}
 
     .top-logo {{
@@ -98,7 +100,7 @@ st.markdown(
     }}
 
     .agent-header {{
-        font-size: 50px;
+        font-size: 32px;
         font-weight: 600;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -106,7 +108,7 @@ st.markdown(
     }}
 
     .stTabs [data-baseweb="tab"] {{
-        font-size: 50px !important;
+        font-size: 20px !important;
         font-weight: 600 !important;
         padding: 12px 24px !important;
     }}

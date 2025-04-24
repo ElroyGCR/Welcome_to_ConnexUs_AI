@@ -4,7 +4,7 @@ import base64
 
 # ✅ Config with native favicon
 st.set_page_config(
-    page_title="Multi-Agent Chat",
+    page_title="ConnexUs.AI Widget Demo",
     page_icon="favicon-32x32.png",  # You can also use "favicon.ico" here
     layout="wide"
 )

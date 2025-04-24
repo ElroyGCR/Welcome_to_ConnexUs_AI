@@ -2,8 +2,20 @@ import streamlit as st
 import streamlit.components.v1 as components
 import base64
 
-# ✅ Config
-st.set_page_config(page_title="Multi-Agent Chat", layout="wide")
+# ✅ Config with native favicon
+st.set_page_config(
+    page_title="Multi-Agent Chat",
+    page_icon="favicon-32x32.png",  # You can also use "favicon.ico" here
+    layout="wide"
+)
+
+# ✅ Custom favicon (PNG version)
+with open("favicon-32x32.png", "rb") as f:
+    favicon_base64 = base64.b64encode(f.read()).decode("utf-8")
+
+components.html(f"""
+    <link rel="icon" type="image/png" href="data:image/png;base64,{favicon_base64}">
+""", height=0)
 
 # ✅ Load watermark and top logo
 with open("connexus_logo_watermark.png", "rb") as f:
@@ -11,7 +23,7 @@ with open("connexus_logo_watermark.png", "rb") as f:
 
 with open("connexus_logo.png", "rb") as f:
     logo_topright_base64 = base64.b64encode(f.read()).decode("utf-8")
-
+    
 # ✅ Inject global styles + watermark
 st.markdown(f"""
 <style>

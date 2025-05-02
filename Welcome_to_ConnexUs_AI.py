@@ -91,7 +91,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ✅ Tabs - this section is now clean
-tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Noah"])
+tabs = st.tabs(["🧠 Amber", "🤖 Abe", "🧠 Alex"])
 
 # === AMBER ===
 with tabs[0]:
@@ -149,7 +149,7 @@ with tabs[1]:
     </div>
     """, height=400)
 
-# === NOAH ===
+# === ALEX ===
 with tabs[2]:
     st.markdown(
     f"""

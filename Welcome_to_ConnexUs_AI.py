@@ -154,7 +154,7 @@ with tabs[2]:
     st.markdown(
     f"""
     <h2 class="agent-header">
-        Noah – Home Life Shield
+        Alex - First Choice Home Waranty
     </h2>
     """,
     unsafe_allow_html=True
@@ -163,10 +163,10 @@ with tabs[2]:
     <div style="background-color: transparent;">
     <script src="https://connexusai.pages.dev/chat-widget.js"
       integrity="vC9YPpJCP1QqkOQ9kePoXmywFRS4mksl4NjUesvWKelztotJiBII+WJuR6TYolgu%"
-      data-source-id="Ai-001-Noah_HomeLifeShield"
-      data-agent-id="agent_b58be8d047b32cb246aa72b900"
-      data-agent-name="Noah"
-      data-div-id="Noah-connexUS">
+      data-source-id="Ai-001-Alex_FirstChoice_Home_Waranty"
+      data-agent-id="agent_35c7a0d0feba917e94b87a745f"
+      data-agent-name="Alex"
+      data-div-id="Alex-connexUS">
     </script>
     <script>
       window.onload = () => {{

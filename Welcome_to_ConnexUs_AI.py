@@ -93,7 +93,7 @@ st.markdown("""
 # ✅ Tabs - this section is now clean
 tabs = st.tabs(["🤖 Joseph Washington","🧠 Amber", "🤖 Abe", "🧠 Alex"])
 
-# === Jospeh Washington ===
+# === Joseph Washington ===
 with tabs[0]:
     st.markdown(
     f"""
@@ -122,7 +122,7 @@ with tabs[0]:
     """, height=400)
 
 # === AMBER ===
-with tabs[0]:
+with tabs[1]:
     st.markdown(
     f"""
     <h2 class="agent-header">
@@ -150,7 +150,7 @@ with tabs[0]:
     """, height=400)
 
 # === ABE ===
-with tabs[1]:
+with tabs[2]:
     st.markdown(
     f"""
     <h2 class="agent-header">
@@ -178,7 +178,7 @@ with tabs[1]:
     """, height=400)
 
 # === ALEX ===
-with tabs[2]:
+with tabs[3]:
     st.markdown(
     f"""
     <h2 class="agent-header">

@@ -112,14 +112,20 @@ with tabs[0]:
     data-agent-id="agent_2b0e7129bfd9e525ea84bdc902"
     data-agent-name="Joseph Washington"
     data-div-id="Joseph Washington-connexUS"
-
-    <!-- overwrite the default title text: -->
-    data-widget-title="Learn about our EBA"
   ></script>
   <script>
     window.onload = () => {{
       ChatWidget.initializeChatWidget();
-      document.body.style.background = "transparent";
+
+      // locate the title element inside Joseph's widget and replace its text
+      const container = document.querySelector("#Joseph\\\\ Washington-connexUS");
+      if (container) {{
+        // adjust this selector to whatever class/tag your widget uses for its header
+        const header = container.querySelector(".cw-header-title")  
+                    || container.querySelector("h4")  
+                    || container.querySelector("div[role='banner']");
+        if (header) header.textContent = "Learn about our EBA";
+      }}
     }};
   </script>
 </div>

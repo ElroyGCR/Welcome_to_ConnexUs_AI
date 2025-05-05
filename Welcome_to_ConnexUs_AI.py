@@ -110,7 +110,7 @@ with tabs[0]:
       data-source-id="Ai-001-CMET_Protoype"
       data-agent-id="agent_2b0e7129bfd9e525ea84bdc902"
       data-agent-name="Joseph Washington"
-      data-div-id="Joseph Washington-connexUS">
+      data-div-id="Learn about EBA">
     </script>
     <script>
       window.onload = () => {{

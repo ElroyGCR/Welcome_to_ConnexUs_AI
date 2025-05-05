@@ -103,23 +103,27 @@ with tabs[0]:
     """,
     unsafe_allow_html=True
 )
-    components.html("""
-    <div style="background-color: transparent;">
-    <script src="https://connexusai.pages.dev/chat-widget.js"
-      integrity="vC9YPpJCP1QqkOQ9kePoXmywFRS4mksl4NjUesvWKelztotJiBII+WJuR6TYolgu%"
-      data-source-id="Ai-001-CMET_Protoype"
-      data-agent-id="agent_2b0e7129bfd9e525ea84bdc902"
-      data-agent-name="Joseph Washington"
-      data-div-id="Joseph Washington-connexUS">
-    </script>
-    <script>
-      window.onload = () => {{
-        ChatWidget.initializeChatWidget();
-        document.body.style.background = "transparent";
-      }};
-    </script>
-    </div>
-    """, height=400)
+    components.html(f"""
+<div style="background:transparent;">
+  <script
+    src="https://connexusai.pages.dev/chat-widget.js"
+    integrity="…"
+    data-source-id="Ai-001-CMET_Protoype"
+    data-agent-id="agent_2b0e7129bfd9e525ea84bdc902"
+    data-agent-name="Joseph Washington"
+    data-div-id="Joseph Washington-connexUS"
+
+    <!-- overwrite the default title text: -->
+    data-widget-title="Learn about our EBA"
+  ></script>
+  <script>
+    window.onload = () => {{
+      ChatWidget.initializeChatWidget();
+      document.body.style.background = "transparent";
+    }};
+  </script>
+</div>
+""", height=400)
 
 # === AMBER ===
 with tabs[1]:

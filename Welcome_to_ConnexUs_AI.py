@@ -103,50 +103,23 @@ with tabs[0]:
     """,
     unsafe_allow_html=True
 )
-    components.html(f"""
-<div style="background:transparent;">
-  <!-- your existing widget script -->
-  <script
-    src="https://connexusai.pages.dev/chat-widget.js"
-    integrity="…"
-    data-source-id="Ai-001-CMET_Protoype"
-    data-agent-id="agent_2b0e7129bfd9e525ea84bdc902"
-    data-agent-name="Joseph Washington"
-    data-div-id="Joseph Washington-connexUS"
-  ></script>
-
-  <!-- NEW: wait for the iframe and then patch its title -->
-  <script>
-    window.addEventListener('load', () => {{
-      ChatWidget.initializeChatWidget();
-
-      // Watch the DOM until the widget iframe appears
-      const mo = new MutationObserver((mutations, obs) => {{
-        const frame = document.querySelector("#Joseph\\\\ Washington-connexUS iframe");
-        if (!frame) return;
-
-        // Once it’s in the DOM, edit its inner header
-        try {{
-          const doc = frame.contentDocument || frame.contentWindow.document;
-          // adjust this selector to whatever element actually holds the "Speak With…" text
-          const headerEl = doc.querySelector('h4') 
-                         || doc.querySelector('.widget-title') 
-                         || doc.querySelector('div[role=banner]');
-          if (headerEl) {{
-            headerEl.textContent = "Learn about our EBA";
-          }}
-        }} catch (e) {{
-          // most cross-origin iframes will block this—see note below
-          console.warn("Could not reach into widget iframe:", e);
-        }}
-
-        obs.disconnect();
-      }});
-      mo.observe(document.body, {{ childList: true, subtree: true }});
-    }});
-  </script>
-</div>
-""", height=400)
+    components.html("""
+        <div style="background-color: transparent;">
+        <script src="https://connexusai.pages.dev/chat-widget.js"
+          integrity="vC9YPpJCP1QqkOQ9kePoXmywFRS4mksl4NjUesvWKelztotJiBII+WJuR6TYolgu%"
+          data-source-id="Ai-001-CMET_Protoype"
+          data-agent-id="agent_2b0e7129bfd9e525ea84bdc902"
+          data-agent-name="Joseph Washington"
+          data-div-id="Joseph Washington-connexUS">
+        </script>
+        <script>
+          window.onload = () => {{
+            ChatWidget.initializeChatWidget();
+            document.body.style.background = "transparent";
+          }};
+        </script>
+        </div>
+    """, height=400)
 
 # === AMBER ===
 with tabs[1]:

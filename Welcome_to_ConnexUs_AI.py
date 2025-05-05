@@ -98,7 +98,7 @@ with tabs[0]:
     st.markdown(
     f"""
     <h2 class="agent-header">
-        Joseph Washington – CMET Prototype
+        Joseph Washington – CMET EBA Info Agent
     </h2>
     """,
     unsafe_allow_html=True

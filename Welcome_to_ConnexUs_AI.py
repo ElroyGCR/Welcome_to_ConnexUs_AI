@@ -105,6 +105,7 @@ with tabs[0]:
 )
     components.html(f"""
 <div style="background:transparent;">
+  <!-- your existing widget script -->
   <script
     src="https://connexusai.pages.dev/chat-widget.js"
     integrity="…"
@@ -113,20 +114,36 @@ with tabs[0]:
     data-agent-name="Joseph Washington"
     data-div-id="Joseph Washington-connexUS"
   ></script>
+
+  <!-- NEW: wait for the iframe and then patch its title -->
   <script>
-    window.onload = () => {{
+    window.addEventListener('load', () => {{
       ChatWidget.initializeChatWidget();
 
-      // locate the title element inside Joseph's widget and replace its text
-      const container = document.querySelector("#Joseph\\\\ Washington-connexUS");
-      if (container) {{
-        // adjust this selector to whatever class/tag your widget uses for its header
-        const header = container.querySelector(".cw-header-title")  
-                    || container.querySelector("h4")  
-                    || container.querySelector("div[role='banner']");
-        if (header) header.textContent = "Learn about our EBA";
-      }}
-    }};
+      // Watch the DOM until the widget iframe appears
+      const mo = new MutationObserver((mutations, obs) => {{
+        const frame = document.querySelector("#Joseph\\\\ Washington-connexUS iframe");
+        if (!frame) return;
+
+        // Once it’s in the DOM, edit its inner header
+        try {{
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          // adjust this selector to whatever element actually holds the "Speak With…" text
+          const headerEl = doc.querySelector('h4') 
+                         || doc.querySelector('.widget-title') 
+                         || doc.querySelector('div[role=banner]');
+          if (headerEl) {{
+            headerEl.textContent = "Learn about our EBA";
+          }}
+        }} catch (e) {{
+          // most cross-origin iframes will block this—see note below
+          console.warn("Could not reach into widget iframe:", e);
+        }}
+
+        obs.disconnect();
+      }});
+      mo.observe(document.body, {{ childList: true, subtree: true }});
+    }});
   </script>
 </div>
 """, height=400)

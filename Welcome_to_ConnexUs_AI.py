@@ -91,10 +91,38 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ✅ Tabs - this section is now clean
-tabs = st.tabs(["🤖 Joseph Washington","🧠 Amber", "🤖 Abe", "🧠 Alex"])
+tabs = st.tabs(["🧠 Sophia Smith","🤖 Joseph Washington","🧠 Amber", "🤖 Abe", "🧠 Alex"])
 
-# === Joseph Washington ===
+# === Sophia Smith ===
 with tabs[0]:
+    st.markdown(
+    f"""
+    <h2 class="agent-header">
+        Sophia Smith – Sokolove Law
+    </h2>
+    """,
+    unsafe_allow_html=True
+)
+    components.html("""
+        <div style="background-color: transparent;">
+        <script src="https://connexusai.pages.dev/chat-widget.js"
+          integrity="vC9YPpJCP1QqkOQ9kePoXmywFRS4mksl4NjUesvWKelztotJiBII+WJuR6TYolgu%"
+          data-source-id="Ai-001-Sokolove_Law_Protoype"
+          data-agent-id="agent_d093d7d7e974f7471d88244ffe"
+          data-agent-name="Sophia Smith"
+          data-div-id="Sophia Smith-connexUS">
+        </script>
+        <script>
+          window.onload = () => {{
+            ChatWidget.initializeChatWidget();
+            document.body.style.background = "transparent";
+          }};
+        </script>
+        </div>
+    """, height=400)
+    
+# === Joseph Washington ===
+with tabs[1]:
     st.markdown(
     f"""
     <h2 class="agent-header">
@@ -122,7 +150,7 @@ with tabs[0]:
     """, height=400)
 
 # === AMBER ===
-with tabs[1]:
+with tabs[2]:
     st.markdown(
     f"""
     <h2 class="agent-header">
@@ -150,7 +178,7 @@ with tabs[1]:
     """, height=400)
 
 # === ABE ===
-with tabs[2]:
+with tabs[3]:
     st.markdown(
     f"""
     <h2 class="agent-header">
@@ -178,7 +206,7 @@ with tabs[2]:
     """, height=400)
 
 # === ALEX ===
-with tabs[3]:
+with tabs[4]:
     st.markdown(
     f"""
     <h2 class="agent-header">
